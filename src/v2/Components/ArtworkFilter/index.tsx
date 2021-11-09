@@ -327,8 +327,6 @@ export const BaseArtworkFilter: React.FC<
             <FiltersPills
               artistId={artistId}
               artistName={artistName}
-              aggregations={filterContext.aggregations!}
-              filters={filterContext.currentlySelectedFilters?.() || {}}
               show={showCreateAlert}
             />
           )}
@@ -385,8 +383,6 @@ export const BaseArtworkFilter: React.FC<
               <FiltersPills
                 artistId={artistId}
                 artistName={artistName}
-                aggregations={filterContext.aggregations!}
-                filters={filterContext.currentlySelectedFilters?.() || {}}
                 show={showCreateAlert}
               />
             )}
