@@ -3,33 +3,32 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type UserInformationTestQueryVariables = {};
-export type UserInformationTestQueryResponse = {
+export type SettingsEditSettingsInformation_Test_QueryVariables = {};
+export type SettingsEditSettingsInformation_Test_QueryResponse = {
     readonly me: {
-        readonly " $fragmentRefs": FragmentRefs<"UserInformation_me">;
+        readonly " $fragmentRefs": FragmentRefs<"SettingsEditSettingsInformation_me">;
     } | null;
 };
-export type UserInformationTestQuery = {
-    readonly response: UserInformationTestQueryResponse;
-    readonly variables: UserInformationTestQueryVariables;
+export type SettingsEditSettingsInformation_Test_Query = {
+    readonly response: SettingsEditSettingsInformation_Test_QueryResponse;
+    readonly variables: SettingsEditSettingsInformation_Test_QueryVariables;
 };
 
 
 
 /*
-query UserInformationTestQuery {
+query SettingsEditSettingsInformation_Test_Query {
   me {
-    ...UserInformation_me
+    ...SettingsEditSettingsInformation_me
     id
   }
 }
 
-fragment UserInformation_me on Me {
+fragment SettingsEditSettingsInformation_me on Me {
   email
   name
   paddleNumber
   phone
-  internalID
 }
 */
 
@@ -38,7 +37,7 @@ const node: ConcreteRequest = {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "UserInformationTestQuery",
+    "name": "SettingsEditSettingsInformation_Test_Query",
     "selections": [
       {
         "alias": null,
@@ -51,7 +50,7 @@ const node: ConcreteRequest = {
           {
             "args": null,
             "kind": "FragmentSpread",
-            "name": "UserInformation_me"
+            "name": "SettingsEditSettingsInformation_me"
           }
         ],
         "storageKey": null
@@ -63,7 +62,7 @@ const node: ConcreteRequest = {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "UserInformationTestQuery",
+    "name": "SettingsEditSettingsInformation_Test_Query",
     "selections": [
       {
         "alias": null,
@@ -105,13 +104,6 @@ const node: ConcreteRequest = {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "internalID",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
             "name": "id",
             "storageKey": null
           }
@@ -123,10 +115,10 @@ const node: ConcreteRequest = {
   "params": {
     "id": null,
     "metadata": {},
-    "name": "UserInformationTestQuery",
+    "name": "SettingsEditSettingsInformation_Test_Query",
     "operationKind": "query",
-    "text": "query UserInformationTestQuery {\n  me {\n    ...UserInformation_me\n    id\n  }\n}\n\nfragment UserInformation_me on Me {\n  email\n  name\n  paddleNumber\n  phone\n  internalID\n}\n"
+    "text": "query SettingsEditSettingsInformation_Test_Query {\n  me {\n    ...SettingsEditSettingsInformation_me\n    id\n  }\n}\n\nfragment SettingsEditSettingsInformation_me on Me {\n  email\n  name\n  paddleNumber\n  phone\n}\n"
   }
 };
-(node as any).hash = '23abb4b970088eab8d140bb5b37bb47c';
+(node as any).hash = 'bacba3a36985208c8d653b5bd00f81a7';
 export default node;
