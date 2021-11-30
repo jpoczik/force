@@ -196,7 +196,7 @@ jobs:
 
   smoke-test-on-live-env:
     docker:
-      - image: cypress/base:14.17.3
+      - image: cypress/base:16.13.0
         environment:
           TERM: xterm
     working_directory: ~/app
@@ -208,6 +208,8 @@ jobs:
       - run:
           name: Run Smoke Tests on Staging
           command: ./node_modules/.bin/cypress run --config baseUrl=$SMOKE_TEST_TARGET
+      - store_artifacts:
+          path: cypress/screenshots
 
 not_master_or_staging_or_release: &not_master_or_staging_or_release
   filters:
