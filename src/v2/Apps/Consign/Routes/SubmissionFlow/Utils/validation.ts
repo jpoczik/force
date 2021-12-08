@@ -5,7 +5,7 @@ export const artworkDetailsValidationSchema = yup.object().shape({
   artistId: yup
     .string()
     .required(
-      "Unfortunately, we currently do not have enough demand for this artist’s work to be consigned."
+      "Unfortunately, we currently do not have enough demand for this artist’s work to be submitted."
     ),
   year: yup.string().required().trim(),
   title: yup.string().required().trim(),
@@ -36,6 +36,7 @@ export const artworkDetailsValidationSchema = yup.object().shape({
     .trim(),
   units: yup.string().required(),
   provenance: yup.string().trim(),
+  location: yup.string().required().trim(),
   // locationId: yup.string().test((value, ctx) =>
   //   value
   //     ? true
