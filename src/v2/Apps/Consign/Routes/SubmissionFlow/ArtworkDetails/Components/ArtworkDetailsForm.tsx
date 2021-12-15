@@ -147,9 +147,10 @@ export const ArtworkDetailsForm: React.FC = () => {
         <Column span={6}>
           <ArtistAutoComplete onError={() => handleAutosuggestError(true)} />
         </Column>
-        <Column span={6} mt={[2, 0]}>
+        <Column span={6} mt={[30, 0]}>
           <Input
             title="year"
+            maxLength={256}
             placeholder="YYYY"
             name="year"
             onBlur={handleBlur}
@@ -158,7 +159,7 @@ export const ArtworkDetailsForm: React.FC = () => {
           />
         </Column>
       </GridColumns>
-      <GridColumns mt={[1, 2]}>
+      <GridColumns mt={[4, 2]}>
         <Column span={6}>
           <Input
             title="Title"
@@ -170,7 +171,7 @@ export const ArtworkDetailsForm: React.FC = () => {
             value={values.title}
           />
         </Column>
-        <Column span={6} mt={[1, 0]}>
+        <Column span={6} mt={[30, 0]}>
           <Input
             title="Materials"
             placeholder="Add Materials"
@@ -182,7 +183,7 @@ export const ArtworkDetailsForm: React.FC = () => {
           />
         </Column>
       </GridColumns>
-      <GridColumns mt={[1, 2]}>
+      <GridColumns mt={[4, 2]}>
         <Column span={6}>
           <Flex justifyContent="space-between">
             <Text variant="xs" mb={0.5} textTransform="uppercase">
@@ -208,11 +209,12 @@ export const ArtworkDetailsForm: React.FC = () => {
         </Column>
         <Column span={6}>
           {limitedEditionRarity && (
-            <Flex alignItems="center" mt={[1, 0]}>
+            <Flex alignItems="center" mt={[30, 0]} mb={[1, 0]}>
               <Input
                 title="Edition Number"
                 placeholder="Your Work's #"
                 name="editionNumber"
+                maxLength={256}
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.editionNumber}
@@ -224,6 +226,7 @@ export const ArtworkDetailsForm: React.FC = () => {
                 title="Edition Size"
                 placeholder="Total # in Edition"
                 name="editionSize"
+                maxLength={256}
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.editionSize}
@@ -232,7 +235,7 @@ export const ArtworkDetailsForm: React.FC = () => {
           )}
         </Column>
       </GridColumns>
-      <GridColumns mt={[1, 2]}>
+      <GridColumns mt={[30, 2]}>
         <Column span={6}>
           <Flex height="100%">
             <Box width="50%" mr={2} height="100%">
@@ -240,6 +243,7 @@ export const ArtworkDetailsForm: React.FC = () => {
                 Height
               </Text>
               <LabeledInput
+                maxLength={256}
                 label={values.units}
                 name="height"
                 onBlur={handleBlur}
@@ -252,6 +256,7 @@ export const ArtworkDetailsForm: React.FC = () => {
                 Width
               </Text>
               <LabeledInput
+                maxLength={256}
                 label={values.units}
                 name="width"
                 onBlur={handleBlur}
@@ -261,7 +266,7 @@ export const ArtworkDetailsForm: React.FC = () => {
             </Box>
           </Flex>
         </Column>
-        <Column span={6} mt={[1, 0]}>
+        <Column span={6} mt={[30, 0]}>
           <Flex height="100%">
             <Box pr={[0, 1]} width="50%" height="100%">
               <Flex>
@@ -273,6 +278,7 @@ export const ArtworkDetailsForm: React.FC = () => {
                 </Text>
               </Flex>
               <LabeledInput
+                maxLength={256}
                 label={values.units}
                 name="depth"
                 onBlur={handleBlur}
@@ -294,17 +300,12 @@ export const ArtworkDetailsForm: React.FC = () => {
           </Flex>
         </Column>
       </GridColumns>
-      <GridColumns mt={[1, 2]}>
+      <GridColumns mt={[4, 2]}>
         <Column span={6}>
           <Flex justifyContent="space-between">
-            <Flex>
-              <Text variant="xs" mb={0.5} mr={0.5} textTransform="uppercase">
-                Provenance
-              </Text>
-              <Text variant="xs" color="black60">
-                (Optional)
-              </Text>
-            </Flex>
+            <Text variant="xs" mb={0.5} textTransform="uppercase">
+              Provenance
+            </Text>
 
             <Clickable
               onClick={() => setIsProvenanceModalOpen(true)}
@@ -325,7 +326,7 @@ export const ArtworkDetailsForm: React.FC = () => {
             value={values.provenance}
           />
         </Column>
-        <Column span={6} mt={[1, 0]}>
+        <Column span={6} mt={[30, 0]}>
           <Input
             title="Location"
             name="location"
