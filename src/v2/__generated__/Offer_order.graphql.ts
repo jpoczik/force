@@ -17,6 +17,8 @@ export type Offer_order = {
                 readonly artwork: {
                     readonly slug: string;
                     readonly price: string | null;
+                    readonly isPriceRange: boolean | null;
+                    readonly " $fragmentRefs": FragmentRefs<"PriceOptions_artwork">;
                 } | null;
                 readonly artworkOrEditionSet: ({
                     readonly __typename: "Artwork";
@@ -35,7 +37,7 @@ export type Offer_order = {
         } | null> | null;
     } | null;
     readonly isInquiryOrder?: boolean;
-    readonly " $fragmentRefs": FragmentRefs<"ArtworkSummaryItem_order" | "TransactionDetailsSummaryItem_order">;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkSummaryItem_order" | "TransactionDetailsSummaryItem_order" | "PriceOptions_order">;
     readonly " $refType": "Offer_order";
 };
 export type Offer_order$data = Offer_order;
@@ -144,7 +146,19 @@ return {
                       "name": "slug",
                       "storageKey": null
                     },
-                    (v0/*: any*/)
+                    (v0/*: any*/),
+                    {
+                      "alias": null,
+                      "args": null,
+                      "kind": "ScalarField",
+                      "name": "isPriceRange",
+                      "storageKey": null
+                    },
+                    {
+                      "args": null,
+                      "kind": "FragmentSpread",
+                      "name": "PriceOptions_artwork"
+                    }
                   ],
                   "storageKey": null
                 },
@@ -207,10 +221,15 @@ return {
       "args": null,
       "kind": "FragmentSpread",
       "name": "TransactionDetailsSummaryItem_order"
+    },
+    {
+      "args": null,
+      "kind": "FragmentSpread",
+      "name": "PriceOptions_order"
     }
   ],
   "type": "CommerceOrder"
 };
 })();
-(node as any).hash = '04bf345b90df1c9bc3f1e30b6e1fa155';
+(node as any).hash = '41a1d51fa10160fc67d63def6bc5bb5d';
 export default node;
