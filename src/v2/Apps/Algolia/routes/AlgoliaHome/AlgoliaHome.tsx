@@ -13,6 +13,9 @@ interface AlgoliaHomeProps {
 }
 
 const getIndexName = () => {
+  console.log("[debug] getEnv", getENV("NODE_ENV"))
+  console.log("[debug] getEnv metaphysics", getENV("METAPHYSICS_ENDPOINT"))
+
   if (getENV("NODE_ENV") === "production") {
     return "Global_production"
   }
