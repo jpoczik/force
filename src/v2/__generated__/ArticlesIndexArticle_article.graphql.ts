@@ -4,27 +4,25 @@
 
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type ArtistConsignButton_artist = {
-    readonly targetSupply: {
-        readonly isInMicrofunnel: boolean | null;
-        readonly isTargetSupply: boolean | null;
-    } | null;
-    readonly internalID: string;
-    readonly slug: string;
-    readonly name: string | null;
+export type ArticlesIndexArticle_article = {
     readonly href: string | null;
-    readonly image: {
+    readonly title: string | null;
+    readonly publishedAt: string | null;
+    readonly author: {
+        readonly name: string | null;
+    } | null;
+    readonly thumbnailImage: {
         readonly cropped: {
             readonly src: string;
             readonly srcSet: string;
         } | null;
     } | null;
-    readonly " $refType": "ArtistConsignButton_artist";
+    readonly " $refType": "ArticlesIndexArticle_article";
 };
-export type ArtistConsignButton_artist$data = ArtistConsignButton_artist;
-export type ArtistConsignButton_artist$key = {
-    readonly " $data"?: ArtistConsignButton_artist$data;
-    readonly " $fragmentRefs": FragmentRefs<"ArtistConsignButton_artist">;
+export type ArticlesIndexArticle_article$data = ArticlesIndexArticle_article;
+export type ArticlesIndexArticle_article$key = {
+    readonly " $data"?: ArticlesIndexArticle_article$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArticlesIndexArticle_article">;
 };
 
 
@@ -33,54 +31,8 @@ const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "ArtistConsignButton_artist",
+  "name": "ArticlesIndexArticle_article",
   "selections": [
-    {
-      "alias": null,
-      "args": null,
-      "concreteType": "ArtistTargetSupply",
-      "kind": "LinkedField",
-      "name": "targetSupply",
-      "plural": false,
-      "selections": [
-        {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "isInMicrofunnel",
-          "storageKey": null
-        },
-        {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "isTargetSupply",
-          "storageKey": null
-        }
-      ],
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "internalID",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "slug",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "name",
-      "storageKey": null
-    },
     {
       "alias": null,
       "args": null,
@@ -91,9 +43,47 @@ const node: ReaderFragment = {
     {
       "alias": null,
       "args": null,
+      "kind": "ScalarField",
+      "name": "title",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "format",
+          "value": "MMMM Do YYYY"
+        }
+      ],
+      "kind": "ScalarField",
+      "name": "publishedAt",
+      "storageKey": "publishedAt(format:\"MMMM Do YYYY\")"
+    },
+    {
+      "alias": null,
+      "args": null,
+      "concreteType": "Author",
+      "kind": "LinkedField",
+      "name": "author",
+      "plural": false,
+      "selections": [
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "name",
+          "storageKey": null
+        }
+      ],
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
       "concreteType": "Image",
       "kind": "LinkedField",
-      "name": "image",
+      "name": "thumbnailImage",
       "plural": false,
       "selections": [
         {
@@ -102,12 +92,12 @@ const node: ReaderFragment = {
             {
               "kind": "Literal",
               "name": "height",
-              "value": 50
+              "value": 511
             },
             {
               "kind": "Literal",
               "name": "width",
-              "value": 50
+              "value": 910
             }
           ],
           "concreteType": "CroppedImageUrl",
@@ -130,14 +120,14 @@ const node: ReaderFragment = {
               "storageKey": null
             }
           ],
-          "storageKey": "cropped(height:50,width:50)"
+          "storageKey": "cropped(height:511,width:910)"
         }
       ],
       "storageKey": null
     }
   ],
-  "type": "Artist",
+  "type": "Article",
   "abstractKey": null
 };
-(node as any).hash = '16e052c9bf2ad2292e85f3b3bb2a6ac5';
+(node as any).hash = '81562b81bddab7c236c0e815d1412bcf';
 export default node;

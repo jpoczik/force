@@ -82,7 +82,7 @@
   },
   "dependencies": {
     "@artsy/backbone-mixins": "3.0.0",
-    "@artsy/cohesion": "4.29.0",
+    "@artsy/cohesion": "4.30.0",
     "@artsy/eigen-web-association": "^1.2.1",
     "@artsy/express-reloadable": "1.6.0",
     "@artsy/fresnel": "3.2.1",
@@ -368,7 +368,7 @@
     "levenary": "1.1.1",
     "lint-staged": "10.2.6",
     "lodash-webpack-plugin": "0.11.6",
-    "mocha": "3.4.1",
+    "mocha": "4.1.0",
     "mocha-junit-reporter": "1.22.0",
     "mocha-multi-reporters": "1.1.7",
     "moment-timezone-data-webpack-plugin": "1.5.0",
