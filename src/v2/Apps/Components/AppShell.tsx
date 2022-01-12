@@ -18,6 +18,7 @@ import { AppToasts } from "./AppToasts"
 import { useNavBarHeight } from "v2/Components/NavBar/useNavBarHeight"
 import { useProductionEnvironmentWarning } from "v2/Utils/Hooks/useProductionEnvironmentWarning"
 import { useAuthValidation } from "v2/Utils/Hooks/useAuthValidation"
+import { IntlProvider } from "react-intl"
 
 const logger = createLogger("Apps/Components/AppShell")
 
@@ -75,48 +76,60 @@ export const AppShell: React.FC<AppShellProps> = props => {
   useNetworkOfflineMonitor()
   useProductionEnvironmentWarning()
 
+  const localizations = {
+    en_US: {
+      message: "",
+    },
+  }
+
   return (
-    <Flex
-      width="100%"
-      // Prevents horizontal scrollbars from `FullBleed` + persistent vertical scrollbars
-      overflowX="hidden"
-      // Implements "Sticky footer" pattern
-      // https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/
-      minHeight="100vh"
-      flexDirection="column"
+    <IntlProvider
+      messages={localizations["en_US"]}
+      locale="en-us"
+      defaultLocale="en-us"
     >
-      {showNav && (
-        <Box height={navBarHeight}>
-          <Box left={0} position="fixed" width="100%" zIndex={100}>
-            <NavBar />
+      <Flex
+        width="100%"
+        // Prevents horizontal scrollbars from `FullBleed` + persistent vertical scrollbars
+        overflowX="hidden"
+        // Implements "Sticky footer" pattern
+        // https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/
+        minHeight="100vh"
+        flexDirection="column"
+      >
+        {showNav && (
+          <Box height={navBarHeight}>
+            <Box left={0} position="fixed" width="100%" zIndex={100}>
+              <NavBar />
+            </Box>
           </Box>
-        </Box>
-      )}
+        )}
 
-      <Theme theme={theme}>
-        <AppToasts accomodateNav={showNav} />
+        <Theme theme={theme}>
+          <AppToasts accomodateNav={showNav} />
 
-        <Flex
-          as="main"
-          id="main"
-          // Occupies available vertical space
-          flex={1}
-        >
-          <AppContainer maxWidth={appContainerMaxWidth}>
-            <HorizontalPadding>{children}</HorizontalPadding>
-          </AppContainer>
-        </Flex>
-
-        {showFooter && (
-          <Flex bg="white100">
-            <AppContainer>
-              <HorizontalPadding>
-                <Footer />
-              </HorizontalPadding>
+          <Flex
+            as="main"
+            id="main"
+            // Occupies available vertical space
+            flex={1}
+          >
+            <AppContainer maxWidth={appContainerMaxWidth}>
+              <HorizontalPadding>{children}</HorizontalPadding>
             </AppContainer>
           </Flex>
-        )}
-      </Theme>
-    </Flex>
+
+          {showFooter && (
+            <Flex bg="white100">
+              <AppContainer>
+                <HorizontalPadding>
+                  <Footer />
+                </HorizontalPadding>
+              </AppContainer>
+            </Flex>
+          )}
+        </Theme>
+      </Flex>
+    </IntlProvider>
   )
 }
