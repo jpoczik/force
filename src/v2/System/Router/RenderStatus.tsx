@@ -1,14 +1,14 @@
-import * as React from "react";
+import * as React from "react"
 import StaticContainer from "react-static-container"
-
 import { Box } from "@artsy/palette"
 import { useSystemContext } from "v2/System"
 import { ErrorPage } from "v2/Components/ErrorPage"
 import ElementsRenderer from "found/ElementsRenderer"
-import { data as sd } from "sharify"
 import createLogger from "v2/Utils/logger"
 import { NetworkTimeout } from "./NetworkTimeout"
 import { PageLoader } from "./PageLoader"
+import { AppShell } from "v2/Apps/Components/AppShell"
+import { getENV } from "v2/Utils/getENV"
 
 const logger = createLogger("Artsy/Router/Utils/RenderStatus")
 
@@ -77,14 +77,15 @@ export const RenderError: React.FC<{
   }
 
   const message =
-    (process.env.NODE_ENV || sd.NODE_ENV) === "development"
+    getENV("NODE_ENV") === "development"
       ? String(props.error.data)
-      : "Internal error"
+      : "Internal Error"
 
-  // TODO: Make error code more granular. See:
-  // https://artsyproduct.atlassian.net/browse/PLATFORM-1343
-  // https://github.com/artsy/reaction/pull/1855
-  return <ErrorPage code={props.error.status || 500} message={message} />
+  return (
+    <AppShell>
+      <ErrorPage mt={4} code={props.error.status || 500} message={message} />
+    </AppShell>
+  )
 }
 
 /**
