@@ -21,6 +21,6 @@ describe("SettingsEditSettingsEmailPreferences", () => {
     renderWithRelay()
 
     expect(screen.queryByText("Email Preferences")).toBeInTheDocument()
-    expect(screen.queryByText("Frequency")).toBeInTheDocument()
+    expect(screen.queryByText("Update Email Preferences")).toBeInTheDocument()
   })
 })
