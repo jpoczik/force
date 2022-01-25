@@ -34,11 +34,15 @@ export const SavedSearchAlertsOverviewRoute: React.FC<SavedSearchAlertsOverviewR
   ] = useState<EditAlertEntity | null>(null)
   const isEditMode = editAlertEntity !== null
 
+  const handleCloseClick = () => {
+    setEditAlertEntity(null)
+  }
+
   return (
     <FullBleed>
       <Separator backgroundColor="black15" />
 
-      <Media greaterThanOrEqual="sm">
+      <Media greaterThanOrEqual="md">
         <GridColumns>
           <Column span={isEditMode ? 6 : 12}>
             <SavedSearchAlertsListPaginationContainer
@@ -55,10 +59,7 @@ export const SavedSearchAlertsOverviewRoute: React.FC<SavedSearchAlertsOverviewR
                     <Text variant="lg" flex={1} mr={1}>
                       {editAlertEntity.name}
                     </Text>
-                    <Clickable
-                      onClick={() => setEditAlertEntity(null)}
-                      mt={0.5}
-                    >
+                    <Clickable onClick={handleCloseClick} mt={0.5}>
                       <CloseIcon />
                     </Clickable>
                   </Flex>
@@ -77,7 +78,7 @@ export const SavedSearchAlertsOverviewRoute: React.FC<SavedSearchAlertsOverviewR
         </GridColumns>
       </Media>
 
-      <Media lessThan="sm">
+      <Media lessThan="md">
         <SavedSearchAlertsListPaginationContainer
           me={me}
           onEditAlertClick={setEditAlertEntity}
@@ -85,7 +86,7 @@ export const SavedSearchAlertsOverviewRoute: React.FC<SavedSearchAlertsOverviewR
         {isEditMode && editAlertEntity && (
           <ModalDialog
             title={editAlertEntity.name}
-            onClose={() => setEditAlertEntity(null)}
+            onClose={handleCloseClick}
             footer={
               <Join separator={<Spacer mt={1} />}>
                 <Button width="100%">Save Alert</Button>
